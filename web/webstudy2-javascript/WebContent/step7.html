@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function deposit(){
+		var f = document.depositForm.money;
+		if(f.value == ""){
+			alert("금액을 입력하세요!");
+			return
+		}else if(f.value <= 0){
+			alert("잘못된 입금액입니다.");
+			f.value ="";
+		}else if(isNaN(f.value)){
+			alert("숫자로 입력하세요");
+			f.value ="";
+		}else{
+			alert(f.value + "원 입금 완료되었습니다.");
+		}
+		f.focus();
+	}
+</script>
+</head>
+<body>
+<form name ="depositForm">
+금액 <input type ="text" name ="money">
+<input type ="button" value ="입금하기" onclick ="deposit()">
+</form>
+
+<!-- 입금하기 버튼 누르면 입력하지 않고 공란이면 금액을 입력하세요!  alert
+0이하이면 잘못된 입금액입니다.  alert
+숫자가 아니면 입금액은 숫자로 입력하세요 alert 
+문제 없으면 100원 입금 완료되었습니다.-->
+</body>
+</html>

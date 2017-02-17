@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript form</title>
+<script type="text/javascript">
+	function testCheckbox() {
+		var df = document.friendForm;
+		//alert(df.friend.length); //동일한 name의 checkbox(요소)일 경우 배열로 인식
+		for (var i = 0; i < df.friend.length; i++) {
+			// alert(df.friend[i].value);
+			alert(df.friend[i].checked);
+		}
+
+	}
+</script>
+</head>
+<body>
+	<form name="friendForm">
+		<input type="checkbox" name="friend" value="김문일">김문일<br>
+		<input type="checkbox" name="friend" value="송중기">송중기<br>
+		<input type="checkbox" name="friend" value="박보검">박보검<br>
+		<input type="button" value="확인" onclick="testCheckbox()">
+	</form>
+</body>
+</html>
