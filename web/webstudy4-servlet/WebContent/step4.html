@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입폼 </title>
+<script type="text/javascript">
+	 function memJoin() {
+		var gender = document.joinForm.gender;
+		var id = document.joinForm.memId;
+		var pw = document.joinForm.memPass;
+		var conPw = document.joinForm.confirmPass
+		
+		if(id.value.length < 3 || id.value.length > 10){
+			alert("아이디는 3글자 이상 10글자 이하여야 합니다.");
+			id.focus();
+			return false;
+		}
+		if(pw.value.length < 5){
+			alert("패스워드는 5자 이상이어야 합니다.");
+			return false;
+		}
+		if(pw.value != conPw.value){
+			alert("패스워드와 패스워드 확인이 일치하지 않습니다.");
+			return false;
+		}
+		
+	}
+</script>
+</head>
+<body>
+ <form name="joinForm" action= "RegisterServlet" method ="post" onsubmit="return memJoin()">
+ 아이디 <input type="text" name="memId" required="required">(3자 이상 10글자 이하)<br>
+ 패스워드 <input type="password" name="memPass" required="required">(5자 이상)<br>
+ <!-- 패스워드와 패스워드 확인은 일치해야 가입가능 -->
+ 패스워드 확인<input type="password" name="confirmPass" required="required"><br>
+ 이름 <input type="text" name="memName" required="required"><br>
+ 주소<input type="text" name="memAddress" required="required"><br>
+ 성별<input type="radio" name="gender" value="남" required="required">남
+ <input type="radio" name="gender" value="여" required="required">여
+ <br>
+ 혈액형<select name="blood">
+ 	<option value="">-혈액형-</option>
+ 	<option value="A">-A형-</option>
+ 	<option value="B">-B형-</option>
+ 	<option value="O">-O형-</option>
+ 	<option value="AB">-AB형-</option>
+ </select>
+ <input type="submit" value="등록">
+ </form>
+ <!-- 1.javascript로 아이디가 3자이상 10자 이하 아니면 alert 전송x
+ 2.패스워드는 5자 이상 아니면 alert 전송x
+ 3.패스워드와 패스워드 확인 일치 여부
+ ----------------------------------
+ step4.RegisterServlet-
+ 회원가입 처리 완료
+ 아이디: 머머
+ 이름: 강정호 
+ 주소: 판교
+ 성별: 여
+ 혈액형: O형
+ -->
+</body>
+</html>
