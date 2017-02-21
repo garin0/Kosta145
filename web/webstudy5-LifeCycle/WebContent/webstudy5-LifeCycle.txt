@@ -1,0 +1,45 @@
+** 참고 **
+webstudy5 웹프로젝트는 web module version 2.5로 생성했다.
+이는 Servlet 생성 시 xml 기반 설정이 자동으로 생성된다.
+(3.0 이상부터는 Servlet 생성시 Annotation 기반 설정으로 자동생성)
+
+** 오늘 주요 목차 **
+ - request.getParameterValues()
+ - Servlet LifeCycle
+ - ServletConfig
+ - ServletContext
+ --------------------------------------
+ 
+ Servlet LifeCycle
+ 
+ 아래의 서블릿 라이프 사이클 메서드는 웹컨테이너에 의해 호출한다.
+ init(ServletConfig) --> service(request,response) --> destroy()
+ 
+ constructor: 객체 초기화 -> 1번
+ init(ServletConfig): 서블릿 초기화 -> 1번
+ service(request,response): 클라이언트에게 서비스 -> client 요청수에 비례
+ destroy(): 서블릿이 서버에서 해제되기 직전에 호출 -> 1번
+ 					WAS(Web Container)
+ client --request--> is loaded? --no--> class loading
+ 						ㅣ					ㅣ
+ 						ㅣ				객체생성(생성자호출)
+ 						yes					ㅣ
+ 						ㅣ				init(ServletConfig)
+ 						ㅣ					ㅣ
+ 						ㅣ---------->	 service(request,response) - doGet() or doPost()
+ 							<--response--
+ 						
+ 						destory()	
+ **ServletConfig**
+ Servlet객체가 웹프로그램으로 일하는 데 필요한 정보를 가지고 있는 객체
+ Servlet 객체당 하나
+ 웹 컨테이너에 의해 각 서블릿의 init(ServletConfig) 메서드 호출 될 때 주입된다.
+ 
+ client가 LoginServlet에 100명이 접속해서 로그인 서비스를 제공받았다.
+ loginServlet 객체 몇개? 1
+ loginServlet의 ServletConfig 몇개? 1
+ loginServlet의 init() 몇번 호출? 1
+ loginServlet의 service() 몇번 호출? 100
+ loginServlet의 스레드 몇개 생성? 100
+ loginServlet의 destory() 몇번 호출? 죽기전에 한번
+ 							

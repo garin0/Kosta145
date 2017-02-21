@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>step1-checkbox.html</title>
+<script type="text/javascript">
+	function menuOrder() {
+		var df = document.menuForm;
+		var flag= false;
+ 		for (var i = 0; i < df.food.length; i++) {
+			if (df.food[i].checked) {
+				flag= true;
+				break;
+			}
+		}
+		if (flag==false) {
+			alert("메뉴 선택하세요");
+			return false;
+		} 
+	}
+</script>
+</head>
+<body>
+<h2>점심메뉴</h2>
+<form method="post" action="MenuServlet" name="menuForm" onsubmit="return menuOrder()">
+<ul>
+	<li>돈까스 <input type="checkbox" name="food" value="돈까스"></li>
+	<li>시래기국<input type="checkbox" name="food" value="시래기국"></li>
+	<li>육회비빔밥<input type="checkbox" name="food" value="육회비빔밥"></li>
+</ul>
+&nbsp;&nbsp;&nbsp;<input type="submit" value="주문">
+</form>
+
+</body>
+</html>
