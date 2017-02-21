@@ -34,14 +34,38 @@
     <display-name>ConfigTestServlet</display-name>
     <servlet-name>ConfigTestServlet</servlet-name>
     <servlet-class>step3.ConfigTestServlet</servlet-class>
-    <!-- ServletConfig 초기파라미터를 할당 -->
     <init-param>
-		<param-name>springConfig</param-name>
-		<param-value>dispatcher-servlet.xml</param-value>
-	</init-param>
+      <param-name>springConfig</param-name>
+      <param-value>dispatcher-servlet.xml</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>ConfigTestServlet</servlet-name>
     <url-pattern>/ConfigTestServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ContextTestServlet</display-name>
+    <servlet-name>ContextTestServlet</servlet-name>
+    <servlet-class>step4.ContextTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContextTestServlet</servlet-name>
+    <url-pattern>/ContextTestServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>ContextTestServlet2</display-name>
+    <servlet-name>ContextTestServlet2</servlet-name>
+    <servlet-class>step4.ContextTestServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContextTestServlet2</servlet-name>
+    <url-pattern>/ContextTestServlet2</url-pattern>
+  </servlet-mapping>
+  <context-param>
+  	<param-name>db_driver</param-name>
+  	<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
 </web-app>
