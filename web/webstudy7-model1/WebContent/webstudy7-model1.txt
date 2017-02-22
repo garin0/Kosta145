@@ -1,0 +1,11 @@
+** model1 Architecture **
+
+기존 구조
+html <---> Servlet(or JSP) <---> Database
+
+Model1
+
+html <---> Servlet(or JSP) <---> java beans(객체들 or 컴포넌트) <---> Database
+
+java beans(ex-DAO)가 business login을 담당하여
+재사용성과 유지보수성을 높이는 구조로 변경해본다.
