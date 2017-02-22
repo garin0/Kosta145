@@ -6,8 +6,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// Data Access Logic
+// Data Access Logic Object
+/*
+ * MemberDAO는 웹 어플리케이션 상에서 하나만 존재한다.
+ * Singleton Pattern을 적용하여 외부에서 객체생성하는 것을 막고
+ * 한번 생성한 객체를 공유하여 사용하게 한다.
+ */
 public class MemberDAO {
+	//class loading 시점에 단 한번 객체 생성하여 method area에 적재
+	private static MemberDAO instance = new MemberDAO();
+	// 외부에서 생성 못하게 private 처리
+	private MemberDAO(){}
+	//외부에 현 객체 레퍼런스를 공유
+	public static MemberDAO getInstance(){
+		return instance;
+	}
 	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
 		if (rs != null)
 			rs.close();

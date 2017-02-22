@@ -9,3 +9,26 @@ html <---> Servlet(or JSP) <---> java beans(객체들 or 컴포넌트) <---> Dat
 
 java beans(ex-DAO)가 business login을 담당하여
 재사용성과 유지보수성을 높이는 구조로 변경해본다.
+
+**Singleton Design Pattern**
+시스템 상에서 단 하나의 객체만 필요한 경우에 적용하는 디자인 패턴
+적용방법) 생성자에 private 접근 제어자를 명시하여
+		  외부에서 객체 생성할 수 없도록 처리한다.
+		  static 변수는 클래스 로딩시에 단 한번 적재되므로
+		  그 속성을 이용해 자신의 클래스에서 자신의 객체를 만든 후
+		  static 변수에 레퍼런스를 저장한다.
+		  외부에 공유는 static 메서드로 한번 생성한 객체의
+		  레퍼런스를 반환하는 구조로 처리한다.
+		  
+사례) 현재 MemberDAO 객체는 하나만 존재하면
+	  각 서블릿에서는 공유해서 사용하면 된다.
+	  즉 불필요하게 사용할 때마다 매번 MemberDAO 객체를 만들 필요가 없다는 의미이다.
+	  
+	  
+** 주요 키워드 **
+ServletConfig, ServletContext 특징
+ServletContextListener 특징
+Model1 설계방식을 적용했을 때의 장점
+
+
+

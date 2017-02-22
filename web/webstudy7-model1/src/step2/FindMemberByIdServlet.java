@@ -32,10 +32,9 @@ public class FindMemberByIdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		MemberDAO dao = new MemberDAO();
 		try {
 			String id = request.getParameter("memberId");
-			MemberVO vo = dao.findMemberById(id);
+			MemberVO vo =  MemberDAO.getInstance().findMemberById(id);
 			if(vo != null){
 				out.print("아이디 "+vo.getId());
 				out.println("<br>이름 "+vo.getName());

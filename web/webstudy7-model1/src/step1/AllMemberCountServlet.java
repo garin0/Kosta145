@@ -31,9 +31,8 @@ public class AllMemberCountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		MemberDAO dao = new MemberDAO();
 		try {
-			int count = dao.getMemberCount();
+			int count = MemberDAO.getInstance().getMemberCount();
 			out.println(count + "명");
 		} catch (SQLException e) {
 			e.printStackTrace();
