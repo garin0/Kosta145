@@ -1,0 +1,53 @@
+** Model 1 Architecture 기반 회원관리 **
+
+JDBC Driver loading 은 ServletContextListener를 이용한다.
+MemberDAO는 Singleton Design Pattern을 적용한다.
+아이디로 회원검색 
+
+index.jsp --> findMemberById.jsp --> findMemberById_action.jsp <--> MemberDAO <--> DB
+			 검색폼						검색결과
+			 							존재하면 
+			 							회원정보 제공(패스워드 제외)
+			 							존재하지 않으면 
+			 							alert();
+			 							"king 아이디에 해당하는 회원은 존재하지 않습니다."
+			 							확인 누르면 index.jsp로 이동한다.
+			 							
+주소로 회원검색
+index.jsp--findMemberByAddress.jsp -- findMemberByAddress_action.jsp -- MemberDAO -- DB
+										판교에 사는 회원 2명
+										테이블(아이디와 이름)
+										or
+										개성에 사는 회원 없음 alert 후 
+										index.jsp로 이동
+										
+										
+										step3 , 4 로그인 , 로그아웃 
+ 
+ index.jsp--- login.jsp ------- login_action.jsp ---- MemberDAO --- DB
+     로그인폼제공    로그인 성공하면
+             아이유님 로그인하셨습니다
+             cafe.jsp 링크 제공한다.
+             cafe.jsp 링크를 누르면
+             판교에 사는 아이유님
+             카페입장을 환영합니다.
+             logout.jsp 링크 제공한다.
+             
+             cafe.jsp에서 로그아웃 링크 누르면 
+             logout.jsp에서  session을 해제시키고
+             javascript alert으로 로그아웃
+             확인 누르면 index.jsp로 이동  
+             
+             로그인 실패하면
+             alert 로그인실패
+             index.jsp로 이동 
+             
+             tip) 로그인 성공하면 세션에
+               회원객체를 setting 하고
+               인증이 필요한 다른 페이지에서는           
+                세션안에 회원객체의 유무로
+                로그인 인증 여부를 판단한다
+                cafe.jsp에서는 로그인하지 않고
+                접속하면 로그인해야 카페입장
+                가능 alert 후 login.jsp 
+										

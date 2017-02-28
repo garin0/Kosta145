@@ -1,0 +1,18 @@
+<%@page import="model.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>cafe.jsp</title>
+</head>
+<body>
+<%	
+MemberVO vo = (MemberVO) session.getAttribute("memberVO");
+%> 
+<%= vo.getAddress() %>에 사는 <%=vo.getName() %>님 입장 환영!
+<a href="logout.jsp">로그아웃</a>
+<hr><a href="index.jsp">홈으로</a>
+</body>
+</html>
