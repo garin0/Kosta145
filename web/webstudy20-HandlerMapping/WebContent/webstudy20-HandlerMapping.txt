@@ -1,0 +1,88 @@
+** Model2 **
+
+MVC Pattern이 근간을 이룬다.
+Model: business + data access logic
+		ex) DAO,Service,DTO,VO 등...
+		java beans(or component)
+		component란  object 들이 서로 교류하면서
+		독립된 기능단위가 될 때 컴포넌트라고 한다.
+		ex) 뇌세포(객체)들이 모여 뇌(컴포넌트)가 구성된다.
+		
+View : 화면을 전담
+		JSP(Java Service Page)가 담당한다.
+		
+Controller: 웹어플리케이션의 제어를 담당
+
+			클라이언트의 요청을 분석 request.getParameter(command)
+			Model과 연동 	DAO.getInstance().find...();
+			연동 결과를 공유 request.setAttribute(name,value)
+			응답을 위한 View로 이동시킨다. forward or redirect
+			
+client --- FindServlet
+client --- UpdateServlet
+client --- DeleteServlet
+
+위의 경우에는 Servlet이 계속 증가된다.
+컨트롤러 영역에서 일관성, 재사용성, 통일성 있는 정책을 
+적용하는 데 한계가 있다.
+
+기존 Model2 MVC에서 FrontController Pattern을 적용한다.
+
+client --- DispatcherServlet(Front Controller)
+client ---
+client ---
+
+즉 모든 클라이언트의 요청을 하나의 서블릿이 처리하도록 설계한다.
+이 경우 DispatcherServlet의 업무량이 급증할 수 밖에 없다.
+그래서 컨트롤러 로직별로 분화시키는 설계를 적용한다.
+
+client -- DispatcherServlet -- Controller
+								  |						|
+								FindController      UpdateController 
+위와 가이 계층구조를 통한 표준화 정책을 Controller 인터페이스와
+하위 구현체(FindController 등...) 로 설계하면
+Encapsulation , Inheritance, Polymorphism의 장점을 얻을 수 있다.
+
+시스템의 요구사항이 복잡해질수록 Front Controller인 DispatcherServlet의
+컨트롤러 구현체 생성 부분이 증가될 수 있다.
+이에 DispatcherServlet과 개별 컨트롤러 (ex-FindController ..)와의
+결합도를 낮추고 구현체 생성부분을 별도의 클래스가 담당하도록
+HandlerMapping(Factor class)을 추가 설계한다.
+
+client -- DispatcherServlet -- HandlerMapping --Controller
+
+DispatcherServlet : Front Controller
+					client 요청을 받는다.
+					HandlerMapping을 이용해 개별 구현체를 
+					컨트롤러 인터페이스 타입으로 반환받는다.
+					컨트롤러 로직을 실행시킨다.
+					실행 후 반환되는 url 및 이동방식에 의거해
+					Model 연동 결과 공유 후 
+					View로 이동시킨다.(forward,redirect)
+HandlerMapping : 컨트롤러 구현체 생성을 전담하는 객체
+				(simple factory pattern)
+				
+Controller: 실제 컨트롤러 로직을 전담하는 구현체들의
+			상위 표준 인터페이스
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
