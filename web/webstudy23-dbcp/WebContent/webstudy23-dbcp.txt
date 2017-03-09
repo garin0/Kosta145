@@ -1,0 +1,27 @@
+**Database Connection Pool**
+- dbcp가 무엇인지 간단히 설명
+- dbcp를 왜 사용해야 하는 가?
+
+
+DBCP (Database Connection Pool)은 db 커넥션 필요시
+커넥션을 생성하고 사용 후 소멸하는 것이 아니라 미리 생성한 커넥션을
+커넥션풀에서 빌려쓰고 반납하는 형식으로 ★'시스템 성능 향상'에 기여한다.
+
+db 커넥션을 생성, 소멸하는 방식 -> dbcp를 이용해 미리 생성해 놓고
+								 ★'빌려쓰고 반납'★ 하는 방식
+									
+WAS(tomcat)에서 제공하는 DBCP를 이용하는 방식으로 적용해본다.
+이후에 Framework(spring)에서는 별도의 dbcp를 Dependency Injection 방식을
+이용해 사용할 예정
+
+Tomcat 8 버전 이후에는 jdbc driver library인 ojdbc14.jar를 ojdbc6.jar로 교체하여 적용해야한다.
+
+
+
+
+
+
+
+
+
+
