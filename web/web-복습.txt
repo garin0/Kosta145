@@ -1,0 +1,82 @@
+** review **
+1. Http
+( Hyper Text Transfer Protocol )
+
+2. HTML,JavaScript,CSS
+( Hyper Text Markup Language ) 
+: 웹브라우저에게 페이지를 표현하라고 명령하기 위한 언어 
+  -> 웹페이지의 정보를 표현 
+ Javascript : 웹페이지의 동작을 담당 ( 이후 ajax , nodejs 등으로 발전 ) 
+
+CSS : -> 웹페이지 디자인 담당 
+
+3. Servlet, JSP 각각 정의
+ Servlet과 JSP의 역할 차이
+	
+4. get방식 post 방식
+GET 방식 : 정보 조회 용도
+		  모든 링크는 GET방식으로 요청된다.
+		  브라우저 URL에 노출된다.
+		  전송 데이터 양은 한정된다.
+		  Form tag에서 별도의 method(전송방식)을 명시하지 않으면 기본이 get방식으로 요청된다.
+ 			  
+POST 방식 : 정보 전송 용도
+			브라우저 URL에 노출되지 않고 HTTP body 부분으로 전송된다.
+			즉, 보안성이 get방식보다 높다.
+			사용자 정보 및 많은 용량의 데이터는 POST으로 전송해야 한다.
+			POST 방식으로 전송되는 데이터에 대한 서버 프로그램 차원에서의 별도의
+			한글처리가 필요하다.( request.setCharacterEncoding("utf-8"); )
+			
+5. WAS,Web Container 역할
+WAS: web server + web container
+Web Container: servlet container or jsp engine 이라고도 한다.
+ 					Servlet과 JSP가 실행될 수 있는 환경을 제공한다.
+ 					
+6. DD(Deployment Descriptor) -> web.xml
+웹 어플리케이션의 설정정보(메타정보)를 명시한다.
+Wep application 최초 시작할 때 DD 파일을 로딩한다.
+
+7. Servlet LifeCycle
+	JSP LifeCycle
+	
+ constructor: 객체 초기화 -> 1번
+ init(ServletConfig): 서블릿 초기화 -> 1번
+ service(request,response): 클라이언트에게 서비스 -> client 요청수에 비례
+ destroy(): 서블릿이 서버에서 해제되기 직전에 호출 -> 1번
+ 
+8. Servlet 계층구조(Servlet Interface - GenericServlet - HttpServlet)
+						interface		 abstract		  abstract
+
+위와 같이 설계한 이유는? 표준화,다형성..
+
+9. ServletConfig와 ServletContext의 역할
+**ServletConfig**
+ Servlet객체가 웹프로그램으로 일하는 데 필요한 정보를 가지고 있는 객체
+ Servlet 객체당 하나
+ 웹 컨테이너에 의해 각 서블릿의 init(ServletConfig) 메서드 호출 될 때 주입된다.
+ ServletConfig는 웹컨테이너에 의해 전달받는 Servlet Configuration Object 개별 서블릿 설정 정보 객체이다.
+ 주로 사용되는 용도는 Spring Framework 의 web application 환경 설정시
+ Spring Framework 설정 파일 정보를 특정 서블릿(DispatcherServlet)에게 전달할 때 활용된다.
+ 또한 웹 어플리케이션 내에 모든 서블릿과 jsp가 공유할 수 있는 객체인 ServletContext를 활용하기 위해서는 반드시
+ ServletConfig 객체가 필요하다.
+ ** ServletContext**
+ 웹어플리케이션 당 하나 생성
+ 웹어플리케이션 시작 시점에 웹 컨테이너가 ServletContext 객체를 생성한다.
+ 웹어플리케이션 전역에서 필요한 환경정보를 저장
+ 모든 서블릿과 JSP는 ServletContext에 접근 가능하고 
+ 필요시 정보를 할당 및 반환받을 수도 있다.
+ 각 서블릿과 JSP는 자신의 ServletConfig 객체가 할당되어 있어서
+ ServletContext를 접근해 사용할 수 있다.
+	Cookie와 Session의 비교
+	
+	
+10. Model1과 Model2를 비교 설명
+11. Model2 -> MVC 각각 역할
+12. Singleton Pattern
+	static 역할 -> instance 변수, local 변수, static(class)변수
+13. Front Controller Pattern
+14.컨트롤러 영역
+	HandlerMapping의 역할
+15.JSTL -JSP Standard Library Tag
+	
+
