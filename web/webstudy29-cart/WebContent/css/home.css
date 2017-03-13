@@ -1,0 +1,59 @@
+.container{
+	width:100%;
+	border: 1px solid black;
+	margin-left:auto;
+	margin-rigth:auto; /*좌우 여백을 동일하게 하여 중앙정렬*/
+}
+.header{
+	padding:20px;
+	height:30px;
+	border-bottom: 1px solid black;
+	background-color: #FFEAD0;
+}
+.left{
+	float:left; 
+	padding:5px;
+	height:500px;
+	width:20%;
+}
+.main{ 
+	padding:10px; 
+	height:500px; 
+	border-left: 1px solid black; 
+	float:left;
+
+}
+.footer{ 
+	height:20px; 
+	border-top: 1px solid black; 
+	padding: 20px; 
+	clear: both; /*float 속성 요소 아래 배치하기 위해 float 속성 초기화시킨다.*/
+}
+.header,.footer{
+	text-align: center;
+}
+table,th,td{
+	border: 1px solid black;
+}
+table { border-collapse:collapse;}
+th,td{ padding:10px}
+
+#submit_btn{
+	float:right;
+}
+.listTable,.cartTable,.detailTable,.registerTable{
+	margin-left:300px;
+	margin-top:10px;
+}
+.loginTable,{
+	margin:auto;
+	text-align:center;
+}
+.detailTable{
+	text-align: left;
+}
+.centerTxt{
+	
+	margin-left: 400px;
+}
+
