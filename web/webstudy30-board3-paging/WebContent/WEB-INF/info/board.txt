@@ -1,0 +1,17 @@
+** step1 **
+화면 설계 구성
+
+-db table
+-application
+	Model: DataSourceManager(dbcp)
+			BoardVO
+			BoardDAO
+	Controller : DispatcherServlet
+				 HandlerMapping
+				 Controller
+				 ListController
+	View : index.jsp -> list.jsp
+	
+	게시판 리스트: 게시물 번호 역순(최신순)
+					글 등록 포맷 연 월 일
+					

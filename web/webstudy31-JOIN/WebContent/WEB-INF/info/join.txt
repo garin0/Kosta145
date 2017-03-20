@@ -1,0 +1,18 @@
+** join sql을 web application에 반영 **
+
+index.jsp를 실행하면
+사원(emp_ex)리스트 화면이 제공 (사원번호,사원명,부서명)
+list.jsp
+------------------------------
+사원번호를 클릭하면
+사원의 상세정보 제공(detail_emp.jsp)
+(사원번호,사원명,월급,부서번호,부서명,지역,TEL)
+------------------------------
+Model: DataSourceManager
+	   EmpDAO
+	   EmpVO has a DeptVO
+	   
+Controller: DispatcherServlet, Controller, HandlerMapping
+			EmpListController, DetailEmpController
+			
+View: index.jsp, list.jsp, detail_emp.jsp
