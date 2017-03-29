@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery basic1</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	/*
+	 * jQuery는 $와 동일한 표현
+	   jQuery(document) or $(document)는 document를 jquery 객체화 하겠다는 의미
+	   $(document).ready(handler); --> 아래는 handler를 익명함수로 정의
+	 */
+	//test1
+	/* 	jQuery(document).ready(function() {
+	 alert("hello jquery");
+	 }); *///현 웹문서의 document가 로드되면 실행된다.
+	//test2
+
+	/* 	$(document).ready(function(){\
+	 alert("hello jquery~2");
+	 }); */
+	 //test3
+	 $(document).ready(hello);
+	 function hello() {
+		alert("hello jquery3");
+	}
+</script>
+</head>
+<body>
+	jquery step1
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function (){
+	 // 현 웹 문서의 a(anchor) tag를 클릭하면 
+	 // 이동하시겠습니까? 의사를 확인한 후 이동하도록 이벤트 정의한다.
+	$("a").click(function(){
+		//false를 리턴하면 이동되지 않는다.
+		return confirm($(this).text()+" 이동하시겠습니까?");
+	});
+ });
+</script>
+</head>
+<body>
+<a href="http://www.daum.net">다음</a>
+<a href="http://www.naver.com">네이버</a>
+<a href="http://www.google.com">구글</a>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#testBtn").click(function() {
+			alert($(this).val());
+		});
+
+		$(".student,.teacher,#nameTxt").click(function() {
+			$(this).css("background", "yellow");
+		});
+	});
+</script>
+<style type="text/css">
+.a {
+	background-color: lime;
+}
+
+.b {
+	font-size: 20px;
+}
+</style>
+</head>
+<body>
+	<input type="button" value="테스트버튼" id="testBtn">
+	<br>
+	<input type="button" value="버튼">
+	<!-- 
+	id testBtn만을 대상으로 해당버튼을 클릭하면 자신의 value를
+	alert으로 출력
+ -->
+	<div class="student">정석희</div>
+	<div>손석희</div>
+	<div class="student">김성환</div>
+	<span class="student">이현근</span>
+	<hr>
+	<!-- 
+	셀렉터.css("background","yellow");
+	testBtn 아이디 버튼을 클릭하면 class가 student인 
+	요소의 배경색을 yellow로 변경
+ -->
+	<span class="teacher">전지현</span>
+	<p id="nameTxt">송중기</p>
+	<!-- 
+	class teacher와 id nameTxt 대상요소도 동일하게 배경색 적용
+ -->
+	<hr>
+	<p class="a">aaaaaaaa</p>
+	<p class="b">bbbbbbbb</p>
+	<p class="a b">abababab</p>
+</body>
+</html>

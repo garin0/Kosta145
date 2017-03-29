@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery ex</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#hideBtn").click(function() {
+			$("#imgView").hide(1000, function() {
+				alert("튜브 없다!")
+			});
+		});
+		$("#showBtn").click(function() {
+			$("#imgView").show(1000, function() {
+				alert("튜브 있다!")
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="imgView">
+		<img src="tube.PNG">
+	</div>
+	<input type="button" value="감추기" id="hideBtn">
+	<input type="button" value="보이기" id="showBtn">
+</body>
+</html>

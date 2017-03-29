@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#jqueryTest").click(function() {
+			alert($(this).text());
+		});
+
+		/* $("a").click(function(){
+			return confirm($(this).text()+" 이동하시겠습니까?");
+		}); */
+		// 주소에 daum이 포함되어 있는 링크만 셀렉트한다.
+		$("a[href*='daum']").click(function() {
+			return confirm($(this).text() + " 이동하시겠습니까?");
+		});
+		$(".friend").click(function() {
+			$(this).fadeOut(3000);
+		});
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="jqueryTest">jQuery 셀렉터 연습</div>
+	<!-- jqueryTest id 영역을 클릭했을 경우 자신의 text가 alert으로 출력 -->
+	<a href="http://www.daum.net">다음</a>
+	<br>
+	<a href="http://www.google.com">구글</a>
+	<br>
+	<a href="http://daum.net">다음카카오</a>
+	<br>
+	<!-- 위 링크를 누르면 confirm으로 다음 이동하시겠습니까?
+확인 누를때만 이동시킨다.
+selector를 수정하여 daum이 url에 포함되어있는 대상만
+위의 이벤트가 동작되게 한다. -->
+	<hr>
+	<span class="friend">이현근</span>
+	<span>송중기</span>
+	<span>공유</span>
+	<span class="friend">김성환</span>
+	<!-- class friend들만 클릭시 fadeOut(3000)시킨다 -->
+</body>
+</html>
