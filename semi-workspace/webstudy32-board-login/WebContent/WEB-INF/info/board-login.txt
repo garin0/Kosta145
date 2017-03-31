@@ -1,0 +1,35 @@
+** 요구 사항 분석 **
+로그인형 게시판
+- 로그인
+- 로그아웃
+- 게시물 리스트
+- 글쓰기
+- 상세보기
+- 삭제
+- 수정
+- 게시물리스트 - sql?? 페이징 포함
+
+----------------------------------------------------
+** 설계 **
+DB Modeling :ERD(논리) - 조별 토론
+ERD(물리),DDL 작성
+-> create table *2,sequence
+-> fk(제약조건명 중복 안되게)
+
+
+Applicaton Modeling =====================
+Model: MemberVO,MemberDAO,BoardVO,BoardDAO
+MemberVO has a BoardVO
+Controller: 
+	HandlerMapping
+	Controller
+	DispatcherServlet
+	
+View: 
+index.jsp
+login.jsp
+login_result.jsp : alert
+list.jsp
+list_content.jsp
+update.jsp
+
