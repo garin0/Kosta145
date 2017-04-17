@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+ <script src="//code.jquery.com/jquery.min.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+	var arr=["임경수","김성환","이현근"];
+	// addOptionBtn id 버튼 누르면 위 배열을 이용해 옵션을 생성
+	// jquery function append를 이용한다.
+	$("#addOptionBtn").click(function(){
+		for(var i=0;i<arr.length;i++){
+			// select option으로 추가
+			$("#friend").append('<option value="'+ arr[i] +'">' + arr[i] + '</option>');
+		}
+	});
+	$("#deleteOptionBtn").click(function(){
+		$("#friend").empty();// 자식 요소들을 삭제
+	});
+	
+ });
+ </script>
+</head>
+<body>
+<!-- 옵션생성버튼 누르면 $.each() 를 이용해 0.강민호 ...  -->
+<input type="button" value="옵션생성" id="addOptionBtn">
+<input type="button" value="옵션삭제" id="deleteOptionBtn">
+<select id="friend"></select>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

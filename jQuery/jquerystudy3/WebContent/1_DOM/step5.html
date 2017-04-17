@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(":checkbox[name=allCheck]").change(function(){
+		 	var flag = $(this).prop("checked");
+		 	$(":checkbox[name=menu]").prop("checked",flag);
+		});
+	});
+</script>
+</head>
+<body>
+<h3>메뉴</h3>
+<input type="checkbox" name="allCheck">전체선택<br>
+<input type="checkbox" name="menu">삼겹살<br>
+<input type="checkbox" name="menu">오뎅과 사케<br>
+<input type="checkbox" name="menu">치킨<br>
+<input type="checkbox" name="menu">골뱅이<br>
+</body>
+</html>
+
+
+
+
+
+

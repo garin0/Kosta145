@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#testBtn").click(function(){
+			var ta=['a','b'];
+			// alert("삉");
+			//alert(ta.toString());
+			/* for(var i=0;i<ta.length;i++){
+				alert(ta[i]);
+			} */
+			ta.push("c");
+			/* $.each(ta,function(index,value){
+				alert(index+"."+value);
+			}); */
+			// ta 배열 요소에서 b요소를 삭제한 배열 만들기
+			// grep 함수를 이용하면 됨
+			var removeItem ="b";
+			ta = $.grep(ta,function(value){
+				/* 개별요소를 처리하는 핸들러(익명함수)에서
+				 true를 반호나하면 요소로 추가되고
+				 false를 반환하면 요소에서 제외된다.
+				*/
+				return value!=removeItem;
+			});
+			alert(ta.toString());
+		});
+	});
+</script>
+</head>
+<body>
+<input type="button" value="eachTest" id="testBtn">
+</body>
+</html>
+
+
+
+
+
+
+

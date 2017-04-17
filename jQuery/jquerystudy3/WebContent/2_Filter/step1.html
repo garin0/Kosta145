@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+ 		//cafe id  div 내의 a tag를 찾아 배경색 지정 
+ 	//	$("#cafe").find("a").css("background","yellow");//적용
+ 	//	$("#cafe").filter("a").css("background","yellow");//적용x 
+ 		//filter() : 대상 자체에서 요소를 탐색 
+ 		//find() : 대상 자식요소에서 요소를 탐색
+ 		//div 자식 요소 중 class 가 b 인 대상을 select 
+ 		//$("div").find(".b").css("background","yellow"); //정우성
+ 		$("div").filter(".b").css("background","yellow"); // 고아라
+ 		/*next(): 대상요소의 다음요소, prev(): 대상 요소의 이전요소
+ 		id descLayer 내부의 class desc 대상들을 클릭할 경우
+ 		그 대상요소의 text()를 다음요소 (span)에 복붙하도록 한다. */
+ 		$("#descLayer .desc").click(function(){
+ 			$(this).next().text($(this).text());
+ 		});
+ 		$("#delBtn").click(function(){
+ 			$("#descLayer .desc").next().text("");
+ 		});
+ 	});
+ </script>
+</head>
+<body>
+<div id="cafe">
+	<a href="">머스트</a>
+	<a href="">파스쿠치</a>
+	<a href="">스타벅스</a>
+	<p>
+		별콩엔탐
+	</p>
+	파담
+</div>
+<hr>
+<div class="a">
+	<p class="b">정우성</p>
+</div>
+<div class="b">
+	<p>고아라</p>
+</div>
+<hr>
+<!-- 
+		id descLayer , class desc 요소를 클릭하면 
+		text()로 다음 엘리먼트에 정보를 추가 , 대상의 배경색을 yellow로 설정
+		#descLayer .desc 
+		next() : 다음 엘리먼트 
+ -->
+<div id="descLayer">
+	<span class="desc">정우성</span> <span></span><br>
+	<span class="desc">고아라</span> <span></span><br>
+	<span class="desc">김연아</span> <span></span><br>
+	<span class="desc">홍명보</span> <span></span><br>
+	<span class="desc">장동건</span> <span></span><br>	
+</div>
+<button id="delBtn">지우기</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

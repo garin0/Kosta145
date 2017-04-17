@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//jqeury text(),html()를 비교
+		//alert($("#dataLayer").text());
+		//alert($("#dataLayer").html());
+		//text(),html(),val(),setter/getter 가 가능
+		//txtBtn 클릭하면 dataLayer에 있는 아이유 정보(html 포함)를
+		//showLayer에 복붙하도록 처리한다.
+		$("#txtBtn").click(function(){
+			$("#showLayer").html($("#dataLayer").html());
+		});
+	});
+</script>
+</head>
+<body>
+<div id="dataLayer">
+	<font size=5 color=pink>아이유</font>
+</div>
+<div id="showLayer"></div>
+<input type="button" value="text입력" id="txtBtn">
+</body>
+</html>
+
+
+
+
+

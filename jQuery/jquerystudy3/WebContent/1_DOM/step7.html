@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn").click(function(){
+			// 대상의 마지막 자식요소로 추가
+			$("#layer1").append(" 멋있다");
+			// 대상의 마지막 형제요소로 추가
+			$("#layer2").after(" 귀엽다");
+			$("#layer1").prepend("대구");
+			$("#layer2").before("신내동");
+			$("a[href*=daum]").append("go");
+			$("a[href*=google]").after("고");
+		});
+	});
+</script>
+<style type="text/css">
+	#layer1{background:yellow;}
+	#layer2{background:lime;}
+</style>
+</head>
+<body>
+<input type="button" id="btn" value="확인">
+<br><br>
+<span id="layer1">황잡스</span><hr>
+<span id="layer2">김워즈니악</span><hr>
+<a href="http://www.daum.net">다음으로</a><br>
+<a href="http://www.google.com">구글로</a><br>
+<a href="http://daum.net">다음으로</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

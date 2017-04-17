@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#testForm").submit(function(){
+		/* alert($("#userId").val());
+		// 아이디 지우고 포커스를 준다
+		$("#userId").val("").focus(); */
+		
+		/* id hp 옵션 value 출력하되 만약 선택되지 않으면 통신사를 선택하세요 alert*/
+		/* if($("#hp").val()==""){
+			alert("통신사를 선택하세요");
+		}else{
+			alert($("#hp").val());
+		} */
+		// 라디오버튼 name gender의 선택된 값을 출력
+		//alert($("#testForm :radio[name=gender]:checked").length);
+		/* var r = $("#testForm :radio[name=gender]:checked");
+		if(r.length==0)
+			alert("성별을 선택하세요!");
+		else
+			alert(r.val()); */
+		var h =$("#testForm :checkbox[name=hobby]:checked");
+		if(h.length == 0){
+			alert("취미를 선택하세요!");
+		}else{
+			for(var i =0;i<h.length;i++){
+				// h[i]: javascript object 이므로 jqeury function val()을 호출할 수 없다.
+				// $(h[i])와 같이 jquery 객체로 만들어 호출해야한다.
+				alert($(h[i]).val());
+			}
+		}
+		
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+	<form id="testForm" action="a.jsp">
+		아이디 : <input type="text" id="userId"><br> 
+		<select id="hp">
+			<option value="">---</option>
+			<option value="SK">SK</option>
+			<option value="KT">KT</option>
+			<option value="LG">LG</option>
+		</select> <br> 
+		<input type="radio" name="gender" value="남">남<br>
+		<input type="radio" name="gender" value="여">여<br> <input
+			type="radio" name="blood" value="O">O형<br> <input
+			type="radio" name="blood" value="A">A형<br> <br> <input
+			type="checkbox" name="hobby" value="노래">노래<br> <input
+			type="checkbox" name="hobby" value="음주">음주<br> <input
+			type="checkbox" name="hobby" value="코딩">코딩<br> <input
+			type="submit" value="전송">
+	</form>
+	<div id="hobbyView"></div>
+	<!-- testForm 의 submit 버튼 누르면 
+	  confirm 동작되고 확인 누르면 전송 , 취소 누르면 전송x 
+ -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

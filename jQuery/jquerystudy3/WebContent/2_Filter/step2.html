@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+ 		$("#testTable td").click(function(){
+ 			// alert($(this).text());
+ 			// parent(): 대상의 부모 요소
+ 			 //alert($(this).parent().html());
+ 			//children(): 대상의 자식요소
+ 			// 클릭된 대상 td의 tr(부모)가 몇개의 td를 가지고 있는지 출력
+ 			//alert($(this).parent().children().length);
+ 			//eq(0)
+ 			// 클릭된 td가 속한 tr의 첫번째 자식요소의 text를 출력
+ 			//alert($(this).parent().children().eq(0).text());
+ 			// 형제요소(자신을 제외한) 탐색 siblings
+ 			alert($(this).siblings().eq(0).text());
+ 		});
+ 	});
+ </script>
+</head>
+<body>
+<!-- 
+		id가 testTable인 테이블의 td를 클릭하면 
+		자신의 text 가 alert으로 출력 
+ -->
+<table border=1 cellpadding="10" id="testTable">
+	<tr>
+		<td>1</td><td>손석희</td><td>아나운서</td>
+	</tr>
+	<tr>
+		<td>2</td><td>정석희</td><td>개발자</td>
+	</tr>
+	<tr>
+		<td>3</td><td>강정호</td><td>야구선수</td>
+	</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
