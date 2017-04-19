@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+<bean id="accountService" class="model.AccountService"></bean>
+<bean id="cardService" class="model.CardService"></bean>
+<bean id="loggingService" class="aop.common.ParamLoggingService"></bean>
+<aop:config>
+	<aop:aspect ref="loggingService">
+		<!-- 
+		advice:공통관심사항 적용시점
+		pointcut: 적용대상 범위를 지정
+		before advice:적용시점을 메서드 실행전
+		within pointcut: model 팩키지 이하의 모든 메서드가 적용대상 
+		-->
+		<aop:before method="beforeLogging" pointcut="within(model.*)"/>
+	</aop:aspect>
+</aop:config>
+</beans>

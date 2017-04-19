@@ -1,0 +1,53 @@
+** Framework 개념정리 **
+Spring Framework의 주요 개념
+: IOC (DI와 DL)
+  AOP
+  SpringMVC
+  
+- MyBatis Framework
+- Tiles Framework
+--------------------------
+용어 정리
+- Module(모듈): 독립적인 기능 단위를 가진 소프트웨어
+- 응집도(cohesion)와 결합도(coupling)
+  "응집도는 높이고, 결합도는 낮춘다."
+  응집도(cohesion): 하나의 모듈이 하나의 역할을 담당
+  결합도(coupling): 모듈간의 상호 의존도
+ 
+- Object: 객체지향 시스템의 기본단위로 기능과 속성을 가지고 있다.
+- Class: Object의 설계도(Object 생성을 위한 틀)
+- library: 재사용 가능한 클래스들의 모음
+- API(Application Programming Interface): 응용 프로그램을 개발하기 위한
+  인터페이스
+- package : class들을 분류하기 위한 것
+- component: 프로그램(class or object)들이 모여 독립적인 기능단위를 
+			 구성하고 부품화될 때 컴포넌트라고 한다.
+- Framework: 뼈대, 틀
+			 - 소프트웨어를 설계,구현,운영하기 위한 기반을 제공
+			 - 반완전한 어플리케이션을 제공
+			 (나머지는 현지화(커스터마이징))
+			 : 어플리케이션(또는 시스템)을 설계,구현,운영하기 위한
+			 다양한 지원을 통해 비즈니스(업무)에 집중할 수 
+			 있도록 하는 것이 프레임워크이다.
+			 
+----------------------------
+IOC(Inversion of Control)
+-> 제어의 역행(역제어)
+: 계층간의 의존관계의 결합도를 낮추기 위해 적용(loose coupling)
+
+ex) 기존 방식으로 제어
+	사용자 --생성--> 티켓
+	IOC 적용
+				컨테이너(Spring IOC 컨테이너)
+	사용자<--									<-- 티켓
+: 기존 제어방식은 사용하는 측에서 객체를 생성(or 확보)했다면
+IOC(제어의 역행) 방식은 IOC 컨테이너에서 필요로 하는 객체를
+생성하여 사용하는 측으로 객체를 주는 동작원리로
+결합도를 낮추어 유지보수성을 향상시킨다.
+
+IOC 적용을 위한 기법
+- DL(Dependency Lookup)
+: 의존대상(사용할 객체)을 검색(Lookup)을 통해 반환받는 방식
+- DI(Dependcy Injection)
+: 의존대상(사용할 객체)을 주입(inject)을 통해 받는 방식
+
