@@ -48,6 +48,42 @@ IOC(제어의 역행) 방식은 IOC 컨테이너에서 필요로 하는 객체�
 IOC 적용을 위한 기법
 - DL(Dependency Lookup)
 : 의존대상(사용할 객체)을 검색(Lookup)을 통해 반환받는 방식
-- DI(Dependcy Injection)
+- DI(Dependency Injection)
 : 의존대상(사용할 객체)을 주입(inject)을 통해 받는 방식
 
+
+** Maven **
+Dependency Management: 의존 라이브러리 관리
+-> 프로젝트에서 필요한 의존 라이브러리에 대한 신속한 설정과
+	버전별 관리가 가능하다.
+	pom.xml : pom(project object model)
+
+** Log4j **
+자바 어플리케이션을 위한 로그 라이브러리
+로그를 레벨별로 작성(콘솔 및 파일)
+trace<debug<info<warn<error<fatal
+
+** AOP **
+Aspect Oriented Programming
+"AOP는 OOP를 더욱 OOP답게 한다."
+
+AOP는 관점 지향 프로그래밍
+시스템을 핵심(Core) 관심사항과 공통(or 횡단 or cross-cutting or common)
+관심사항으로 구분하여 분석,설계,구현,운영한다.
+-> AOP는 공통관심사항을 별도의 모듈로 설계 구현하여
+   생산성과 유지보수성을 향상시키는 것을 목적으로 한다.
+   
+AOP 용어
+- advice : 공통관심사항을 어느 시점에 적용할 것인가
+		  before advice, after advice, after-returning advice
+		  after-throwing advice, around advice
+- pointcut : 공통관심사항을 적용하는 대상을 지정(적용대상을 정하는 알고리즘)
+			within()
+			execution()
+			bean()
+
+-------------------------------
+
+Interface -> 상속,다형성
+IOC -> DL,DI
+AOP why?

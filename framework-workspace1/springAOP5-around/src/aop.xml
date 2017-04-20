@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+<bean id="boardService" class="kosta.board.BoardService"></bean>
+<bean id="memberService" class="kosta.member.MemberService"></bean>
+<!-- 공통 관심사항을 정의한 객체 생성 -->
+<bean id="logging" class="aop.common.PerformanceReportService"></bean>
+<aop:config>
+	<aop:aspect ref="logging">
+	<!-- arount advice로 적용시점을 메서드 실행 전, 후,예외 처리에 대한
+	전체적인 제어를 한다.
+	pointcut:execution으로 public 접근 제어자 리턴타입 관계없이
+		kosta 팩키지 하위의 모든 팩키지의 Service로 끝나느 클래스를 대상으로
+		메서드명은 관계없이 모든 메서드의 매개변수는 0~n까지
+			pointcut test:bean()	
+	 -->
+		<!-- <aop:around method="checkTime" pointcut="execution(public * kosta..*Service.*(..))" /> -->
+		<aop:around method="checkTime" pointcut="bean(*Service)"/>
+	</aop:aspect>
+</aop:config>
+</beans>

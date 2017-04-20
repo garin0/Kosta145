@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+		
+<bean id="memberService" class="kosta.model.member.MemberService"></bean>
+<bean id="memberDao" class="kosta.model.member.MemberDao"></bean>
+<bean id="boardService" class="kosta.model.board.BoardService"></bean>
+<!-- aop config -->
+<bean id="loggingService" class="kosta.common.LoggingService"></bean>
+<aop:config>
+	<aop:aspect ref="loggingService">
+		<aop:after-returning method="testLog" returning="retValue"
+		pointcut="execution(public String kosta.model..*.select*(..))"/>
+	</aop:aspect>
+</aop:config> 
+</beans>
