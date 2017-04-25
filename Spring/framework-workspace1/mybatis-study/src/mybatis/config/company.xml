@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="company">
+	<sql id="selectDept">
+		select deptno ,dname, loc from dept
+	</sql>
+	<sql id="selectEmp">
+		select empno,ename,job,mgr,hiredate,sal,comm,deptno from emp
+	</sql>
+	<select id="getAllDeptList" resultType="map">
+		<include refid="selectDept"></include>
+	</select>
+	<!-- column명과 멤버변수명이 일치되지 않을 경우에는 별칭을 이용하면 된다. -->
+	<select id="getAllDeptListDeptnoDesc" resultType="deptVO">
+		select
+		deptno,dname, loc as location from dept order by deptno desc
+	</select>
+	<!-- <resultMap type="deptVO" id="deptRM"> <result column="loc" property="location"/> 
+		</resultMap> -->
+	<resultMap type="empVO" id="empRM">
+		<result column="mgr" property="manager" />
+		<result column="sal" property="salary" />
+		<result column="comm" property="commission" />
+	</resultMap>
+	<select id="getAllEmpList" resultMap="empRM">
+		<include refid="selectEmp"></include>
+	</select>
+
+	<select id="getEmpListLikeName" resultMap="empRM">
+		<include refid="selectEmp"></include>
+		where ename like '%'||#{value}||'%'
+	</select>
+	<select id="getEmpListLikeNameAndJob" resultMap="empRM"
+		resultType="map">
+		<include refid="selectEmp"></include>
+		where ename like '%'||#{NAME}||'%' and job = #{JOB}
+	</select>
+	<!-- CDATA 영역: Character Data 영역을 의미
+		xml tag가 아니라 sql 표현임을 알린다. -->
+	<select id="getEmpListBySal" resultMap="empRM">
+		<include refid="selectEmp"></include>
+			<![CDATA[
+				where sal < #{value}
+			]]>
+	</select>
+	<select id="getEmpAndDeptInfo" resultType="map">
+		select e.ename,d.dname,d.loc from emp e,dept d
+		where e.deptno = d.deptno and empno = #{value}
+	</select>
+	<select id="getEmpAndSalGrade" resultType="map">
+		select e.sal,e.ename,s.grade from emp e, salgrade s
+			<![CDATA[
+				where e.sal>=s.losal and e.sal<= s.hisal 
+			]]>
+			and e.empno = #{value}
+	</select>
+	<select id="getEmpAndDeptOuterJoin" resultType="map">
+		select e.empno,e.ename,d.deptno,d.dname,d.loc
+		from emp e,dept d
+		where e.deptno(+) = d.deptno
+		order by e.deptno asc
+	</select>
+	
+	<select id="getEmpListByDinamicSQL" resultMap="empRM" parameterType="empVO">
+		<include refid="selectEmp"></include>
+		<!-- Dynamic SQL 적용 -->
+		<where>
+			<if test="deptno!=0">
+			deptno = #{deptno} 
+			</if>
+			<if test="ename!=null and ename!=''">
+			and ename like '%'||#{ename}||'%'
+			</if>
+		</where>
+	</select>
+	
+</mapper>
+ 

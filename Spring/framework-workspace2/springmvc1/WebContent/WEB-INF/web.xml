@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>springmvc1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <!--  springmvc 설정 
+  		spring framework에서 제공하는 front 역할인 DispatcherServlet을 이용하기 위해 아래의 설정을 추가한다.
+  		.do로 요청되는 모든 클라이언트 request를 아래의 DispatcherServlet이 처리하도록 설정한 것이다.
+  		또한 명시한 servlet-name에 의거하여 [servlet-name]-servlet.xml과 같은 자신의 spring 설정파일을
+  		로딩하도록 약속되어 있으므로 spring framework의 설정파일명은 dispatcher-sevlet.xml이 된다.
+  -->
+  <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>
