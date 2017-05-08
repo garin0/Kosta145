@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="movie">
+	<sql id="selectDirector">
+	
+	</sql>
+ 	<select id="getDirectorInfo" resultType="map">
+ 		select director_id,director_name,director_intro 
+ 		from director where director_id = #{value}
+ 	</select>
+ 	<insert id="insertMovieMap" parameterType="map">
+ 		insert into
+		movie(movie_id,title,genre,attendance,director_id)
+		values(#{MOVIE_ID},#{MOVIE_TITLE},#{MOVIE_GENRE},#{MOVIE_ATTENDANCE},#{DIRECTOR_ID})
+ 	</insert>
+ 	<select id="getMoviewMap" resultType="map">
+ 		select m.title,m.genre,m.attendance,
+ 		d.director_name
+ 		from movie m,director d
+ 		where m.director_id = d.director_id and m.movie_id = #{value}
+ 	</select>
+ 	<insert id="insertDirectorVO" parameterType="directorVO">
+		insert into director 
+		values(#{directorId},#{directorName},#{intro})
+ 	</insert>
+ 	<select id="getAllDirectorList" resultType="directorVO">
+ 		select director_id as directorId,
+ 		director_name as directorName,
+ 		director_intro as intro 
+ 		from director
+ 	</select>
+ 	<!-- 
+ 		MovieVO의 멤버변수 directorVO의 멤버변수 directorId
+ 		,#{directorVO.directorId}
+ 	 -->
+ 	<insert id="insertMovieVO" parameterType="movieVO">
+ 		insert into movie(movie_id,title,genre,attendance,director_id)
+ 		values(#{movieId},#{title},#{genre},
+ 		#{attendance},#{directorVO.directorId})
+ 	</insert>
+ 	<!-- movie table의 resultMap
+ 		column movie_id property movieId
+ 		column director_id property directorVO.directorId-->
+ 	<resultMap type="movieVO" id="movieListRM">
+ 		<result column="movie_id" property="movieId"/>
+ 		<result column="director_name" property="directorVO.directorName"/>
+ 	</resultMap>
+ 	<select id="getMovieListAndDirectorInfo" resultMap="movieListRM">
+ 		select m.title,d.director_name
+ 		from movie m,director d
+ 		where m.director_id = d.director_id
+ 	</select>
+ 	<!-- resultMap은 extends가 가능하다.
+ 		movieListRM을 확장하여
+ 		detailMovieRM을 정의한다. -->
+ 	<resultMap type="movieVO" id="detailMovieRM" extends="movieListRM">
+ 		<result column="director_id" property="directorVO.directorId"/>
+ 		<result column="director_intro" property="directorVO.intro"/>
+ 	</resultMap>
+ 	<select id="getMovieAndDirectorDetailInfo" resultMap="detailMovieRM">
+ 		select m.movie_id,m.title,m.genre,
+ 		m.attendance,d.director_id,d.director_name,d.director_intro
+ 		from movie m,director d
+ 		where m.director_id = d.director_id and m.movie_id = #{value}
+ 	</select>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

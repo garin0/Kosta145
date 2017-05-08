@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guestbook">
+ 	<select id="getAllGuestBookList" resultType="guestBookVO">
+ 		select no,title,content from guestbook order by no desc
+ 	</select>
+ 	<insert id="insertGuestBook" parameterType="guestBookVO">
+ 		insert into guestbook(no,title,content) 
+ 		values(guestbook_seq.nextval,#{title},#{content})
+ 	</insert>
+ 	<!-- insert sql이 실행되기 전에
+ 		시퀀스를 발급받아 guestBookVO 객체의 멤버변수 no에 할당한 후
+ 		insert 시킨다. -->
+ 	<insert id="insertGuestBook2" parameterType="guestBookVO">
+ 		<selectKey keyProperty="no" order="BEFORE" resultType="int">
+ 			select guestbook_seq.nextval from dual
+ 		</selectKey>
+ 		insert into guestbook(no,title,content)
+ 		values(#{no},#{title},#{content})
+ 	</insert>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<sql id="selectMember">
+		select id,password,name,address from spring_member
+	</sql>
+	<select id="findMemberById" resultType="memberVO">
+		<include refid="selectMember"></include>
+		where id=#{value}
+	</select>
+	<insert id="insertMember" parameterType="memberVO">
+		insert into
+		spring_member(id,password,name,address)
+		values(#{id},#{password},#{name},#{address})
+	</insert>
+	<select id="getAllMemberList" resultType="memberVO">
+		<include refid="selectMember"></include>
+	</select>
+
+	<select id="findMemberMapById" resultType="map">
+		<include refid="selectMember"></include>
+		where id=#{value}
+	</select>
+	<select id="findMemberListByAddress" resultType="memberVO">
+		<include refid="selectMember"></include>
+		where address=#{value}
+	</select>
+	<select id="findMemberListMapByAddressAndName" parameterType="memberVO"
+		resultType="map">
+		<include refid="selectMember"></include>
+		where address=#{address} and name=#{name}
+	</select>
+	<update id="updateMember" parameterType="map">
+		update spring_member set
+		password = #{PASS}, <!-- MAP의 컬럼대로 써야함 -->
+		name = #{NAME},
+		address =#{ADDR}
+		where id = #{ID}
+	</update>
+	<delete id="deleteMemberByName">
+		delete from spring_member where name = #{value}
+	</delete>
+	<select id="getAllMemberMap" resultType="memberVO">
+		<include refid="selectMember"></include>
+	</select>
+	<select id="getAddressKindList" resultType="string">
+		select distinct address from spring_member
+	</select>
+	<select id="getMemberCount" resultType="int">
+		select count(*) from spring_member
+	</select>
+</mapper>

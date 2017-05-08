@@ -1,0 +1,18 @@
+** File List **
+상품등록 -> 검색(제조사,상품명)
+
+상품등록하고 등록 정보 보여야 한다.
+
+config: SqlSessionConfig.xml
+		product.xml
+
+Model: ProductVO
+
+Controller: ProductDAO, ProductDAOImpl
+
+View: 
+register_result
+searchProduct_result
+searchMaker_result
+
+총 구현시간:
