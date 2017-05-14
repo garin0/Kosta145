@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="broker">
+	<select id="login" resultType="customerVO" parameterType="customerVO">
+		select id,password,name,address from customer where id = #{id} and password=#{password}
+	</select>
+	<sql id="selectStock">
+		select symbol,price from stock
+	</sql>
+	<sql id="selectShares">
+		select id,symbol,quantity from shares
+	</sql>
+	<select id="stockList" resultType="stockVO">
+		<include refid="selectStock"/> 
+	</select>
+	<select id="sharesList" resultMap="sharesRM">
+	select symbol,quantity,quantity*price as total 
+	from(select a.symbol,a.quantity,b.price 
+	from shares a,stock b where a.symbol = b.symbol and a.id =  #{value}) order by quantity desc
+	</select>
+	<select id="findStock" parameterType="sharesVO" resultType="sharesVO">
+		<include refid="selectShares"/> where symbol = #{symbol} and id=#{id}
+	</select>
+	<insert id="buyStock" parameterType="sharesVO">
+		insert into shares values(#{id},#{symbol},#{quantity})
+	</insert>
+	<resultMap type="sharesVO" id="sharesRM">
+		<result column="total" property="total"/>
+	</resultMap>
+	<update id="updateStock" parameterType="sharesVO">
+		update shares set quantity = quantity + #{quantity}
+		where symbol=#{symbol} and id=#{id}
+	</update>
+	<update id="sellStock" parameterType="sharesVO">
+		update shares set quantity = quantity - #{quantity}
+		where symbol=#{symbol} and id=#{id}
+	</update>
+</mapper> 		
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

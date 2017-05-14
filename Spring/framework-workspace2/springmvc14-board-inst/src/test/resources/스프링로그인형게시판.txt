@@ -1,0 +1,91 @@
+**Spring 게시판(Board)**
+
+-요구분석 
+로그인
+로그아웃
+게시글쓰기
+상세글보기
+목록(페이징)
+게시글삭제
+게시글수정 
+
+- 설계
+UI 참고해서 
+db modeling -> ERD ( 논리, 물리 ) 
+UML -> Class Diagram ( VO 단위 ) 
+
+-----------------------------
+권장사항
+
+단위테스트 JUnit 활용 
+Paging SQL -> 최근 게시물 5개 추출 후 조인하는 형태를 권장 
+컨트롤러 영역의 공통관
+m 사항인 인증체크는 Interceptor로 처리해본다 
+( hint : spring 설정상에서 mvc:exclude-mapping ) 
+			
+			
+			
+	참고 ) jsp 상에서 현재 웹어플리케이션명 
+			EL로 확인하기 
+			${pageContext.request.contextPath}	
+- 구현 
+	영역별 File List 
+	설정파일 : 
+	Model : 
+	Controller : 
+	View : /member/login.jsp
+			...
+			/board/list.jsp 
+			/css/
+			/img/
+		
+-----------------------------------------------			
+프로그램 구성 
+설정 정보 : 메이븐: pom.xml 
+				web 및 spring: web.xml , kosta-mvc.xml , kosta-mybatis.xml
+				mybatis :   mybatis/config/SqlSessionConfig.xml
+												member.xml
+												board.xml 
+Model : 	MemberVO , MemberDAO , MemberDAOImpl , 
+			MemberService,MemberServiceImpl
+			BoardVO , BoardDAO , BoardDAOImpl
+			BoardService,BoardServiceImpl 
+			PagingBean , ListVO 
+View : 	index.jsp
+			/member/login.jsp
+			/member/login_result.jsp
+			/board/list.jsp
+			/board/write.jsp
+			/board/show_content.jsp
+			/board/update.jsp 
+			/css/board.css
+			/img/
+			/resources/jquery1...js 
+			
+Controller : MemberController , BoardController
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

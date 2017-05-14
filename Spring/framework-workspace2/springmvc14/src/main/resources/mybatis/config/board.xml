@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board"> 	
+	<select id="getTotalContent" resultType="int">
+		select count(*) from spring_board
+	</select>
+	<select id="getAllBoardList" parameterType="map" resultMap="boardInfoRM">
+		select b.*,m.name
+		from(select row_number() over(order by no desc) as rnum,no,title,content,hit,
+		time_posted,smid from spring_board) b, 
+		spring_member m where m.id=b.smid 
+        and rnum between #{start} and #{end} order by no desc
+	</select>
+	<insert id="write">
+		<selectKey resultType="int" keyProperty="no" order="BEFORE">
+			select spring_board_seq.nextval from dual
+		</selectKey>
+		insert into spring_board(no,title,content,time_posted,smid) 
+		values(#{no},#{title},#{content},sysdate,#{smid})
+	</insert>
+	
+	<resultMap type="boardVO" id="boardInfoRM">
+ 		<result column="name" property="memberVO.name"/>
+ 		<result column="smid" property="memberVO.id"/>
+ 	</resultMap>
+ 	
+ 	<select id="showContent" resultMap="boardInfoRM">
+ 		select * from spring_board b,spring_member m where b.smid = m.id and no = #{value}
+ 	</select>
+ 	<update id="update" parameterType="boardVO">
+ 		update spring_board
+ 		set title = #{title},content = #{content}
+ 		where no = #{no}
+ 	</update>
+ 	<delete id="deletePosting">
+ 		delete from spring_board where no=#{value}
+ 	</delete>
+ 	<update id="updateHit">
+ 		update spring_board set hit=hit+1 where no=#{value}
+ 	</update>
+ 	<select id="nextBoardNo" resultType="int">
+ 		select spring_board_seq.nextval from dual
+ 	</select>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+**로그인형 게시판**
+-요구분석
+로그인 (비회원)
+로그아웃 (회원)
+게시글 목록 (비회원)
+게시글 쓰기 (회원)
+상세글 보기 (회원)
+수정 (회원:본인 작성게시물에 한함)
+삭제 (회원:본인 작성게시물에 한함)
+페이징
+
+- 일정
+설계 : ERD(논리,물리) --> DDL
+		application file list(Model,View,Controller)
+		설정파일 리스트:web.xml/spring-mvc.xml/spring-mybatis.xml/SqlSessionConfig.xml
+						member.xml/board.xml
+		-> BoardVO와 MemberVO 관계 중심으로 토의 has a 관계
+적용기술
+:SpringMVC,IOC(or DI),jQuery,javascript,css,Servlet/JSP
+Mybatis ,JDBC , SQL, jUnit , Maven, Handler Interceptor
+
+구현-총 구현시간
